@@ -39,5 +39,18 @@ class BinaryTree
       @right_child.preorder
     end
   end
+
+  def inorder(&prc)
+    prc ||= Proc.new { |el| puts el }
+
+    if @left_child
+      @left_child.inorder
+    end
+    prc.call(@root)
+    if @right_child
+      @right_child.inorder
+    end
+  end
+
   
 end
