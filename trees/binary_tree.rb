@@ -27,4 +27,17 @@ class BinaryTree
       @right_child = right
     end
   end
+
+  def preorder(&prc)
+    prc ||= Proc.new { |el| puts el }
+
+    prc.call(@root)
+    if @left_child
+      @left_child.preorder
+    end
+    if @right_child
+      @right_child.preorder
+    end
+  end
+  
 end
