@@ -65,3 +65,13 @@ def evaluate(parse_tree)
     return eval("#{parse_right}#{operator}#{parse_left}")
   end
 end
+
+def get_expression(parse_tree)
+  expression = ''
+  if parse_tree
+    expression = '(' + get_expression(parse_tree.left_child)
+    expression += parse_tree.root
+    expression += get_expression(parse_tree.right_child) + ')'
+  end
+  expression
+end
