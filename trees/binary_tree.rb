@@ -52,5 +52,16 @@ class BinaryTree
     end
   end
 
+  def postorder(&prc)
+    prc ||= Proc.new { |el| puts el }
+
+    if @left_child
+      @left_child.postorder
+    end
+    if @right_child
+      @right_child.postorder
+    end
+    prc.call(@root)
+  end
   
 end
