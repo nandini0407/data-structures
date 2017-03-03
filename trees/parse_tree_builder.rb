@@ -1,4 +1,4 @@
-require 'binary_tree'
+require_relative 'binary_tree'
 
 class Stack
 
