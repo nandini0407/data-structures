@@ -14,8 +14,10 @@ def build_binary_tree(arr)
       bt_arr << BinaryTree.new(el)
     end
   end
-  bt_arr
+  bt_arr[0]
 end
+
+bin_tree = build_binary_tree([1, 2, 3, 4, 5, 6])
 
 def build_binary_search_tree(arr)
   root = BSTNode.new(arr[0])
@@ -25,6 +27,10 @@ def build_binary_search_tree(arr)
   end
   tree.root
 end
+
+bst = build_binary_search_tree([5, 8, 3, 2, 7, 4, 1])
+
+# Problem 1a : Inorder, preoder and postorder tree traversals
 
 def inorder(node)
   if node.left_child
@@ -56,12 +62,46 @@ def postorder(node)
   puts node.value
 end
 
-bin_tree = build_binary_tree([1, 2, 3, 4, 5, 6])
-inorder(bin_tree[0])
-preorder(bin_tree[0])
-postorder(bin_tree[0])
+# inorder(bin_tree)
+# preorder(bin_tree)
+# postorder(bin_tree)
 
-# bst = build_binary_search_tree([5, 8, 3, 2, 7, 4, 1])
 # inorder(bst)
 # preorder(bst)
 # postorder(bst)
+
+# Problem 2 : Calculate size of a tree
+
+def size(node)
+  if node.nil?
+    return 0
+  elsif node.left_child.nil? && node.right_child.nil?
+    return 1
+  else
+    left_size = size(node.left_child)
+    right_size = size(node.right_child)
+    return left_size + 1 + right_size
+  end
+end
+
+# puts size(bin_tree)
+# puts size(bst)
+
+def height(node)
+  if node.nil?
+    return 0
+  elsif node.left_child.nil? && node.right_child.nil?
+    return 1
+  else
+    left_height = height(node.left_child)
+    right_height = height(node.right_child)
+    if left_height >= right_height
+      return left_height + 1
+    else
+      return right_height + 1
+    end
+  end
+end
+
+puts height(bin_tree)
+puts height(bst)
