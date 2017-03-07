@@ -11,6 +11,8 @@ end
 
 class BinarySearchTree
 
+  attr_reader :root
+
   def initialize(root)
     @root = root
   end
@@ -23,21 +25,18 @@ class BinarySearchTree
     BinarySearchTree.find!(@root, value)
   end
 
-  def delete
-    @root = BinarySearchTree.delete!(@root, value)
+  def delete(value)
+    BinarySearchTree.delete!(@root, value)
   end
 
   def self.insert!(node, value)
-    if node.nil?
-      return BSTNode.new(value)
+    return BSTNode.new(value) unless node
+    if value <= node.value
+      node.left_child = BinarySearchTree.insert!(node.left_child, value)
     else
-      if value <= node.value
-        node.left_child = BinarySearchTree.insert!(node.left_child, value)
-      else
-        node.right_child = BinarySearchTree.insert!(node.right_child, value)
-      end
-      return node
+      node.right_child = BinarySearchTree.insert!(node.right_child, value)
     end
+    return node
   end
 
   def self.find!(node, value)
@@ -81,6 +80,7 @@ class BinarySearchTree
         min.left_child = left
         min.right_child = right
       end
+      return node_to_delete
     elsif value == node.right_child
       node_to_delete = node.right_child
       if node_to_delete.left_child.nil? && node_to_delete.right_child.nil?
@@ -97,6 +97,9 @@ class BinarySearchTree
         min.left_child = left
         min.right_child = right
       end
+      return node_to_delete
+    elsif value < node.value
+    elsif value > node.value
     end
   end
 

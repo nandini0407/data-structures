@@ -17,15 +17,48 @@ def build_binary_tree(arr)
   bt_arr
 end
 
-print build_binary_tree([1, 2, 3, 4, 5, 6])
+# print build_binary_tree([1, 2, 3, 4, 5, 6])
 
 def build_binary_search_tree(arr)
-  bst_arr = []
-  arr.each_with_index do |el, i|
-    if (i - 1) / 2 >= 0
-    else
-      root = BSTNode.new(el)
-      bst_arr << BinarySearchTree.new(root)
-    end
+  root = BSTNode.new(arr[0])
+  tree = BinarySearchTree.new(root)
+  arr[1..-1].each do |el|
+    tree.insert(el)
+  end
+  tree.root
+end
+
+def inorder(node)
+  if node.left_child
+    inorder(node.left_child)
+  end
+  puts node.value
+  if node.right_child
+    inorder(node.right_child)
   end
 end
+
+def preorder(node)
+  puts node.value
+  if node.left_child
+    preorder(node.left_child)
+  end
+  if node.right_child
+    preorder(node.right_child)
+  end
+end
+
+def postorder(node)
+  if node.left_child
+    postorder(node.left_child)
+  end
+  if node.right_child
+    postorder(node.right_child)
+  end
+  puts node.value
+end
+
+bst = build_binary_search_tree([5, 8, 3, 2, 7, 4, 1])
+inorder(bst)
+preorder(bst)
+postorder(bst)
