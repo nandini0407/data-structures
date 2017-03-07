@@ -24,9 +24,8 @@ class BinarySearchTree
   end
 
   def delete
+    @root = BinarySearchTree.delete!(@root, value)
   end
-
-  private
 
   def self.insert!(node, value)
     if node.nil?
@@ -57,10 +56,47 @@ class BinarySearchTree
     if node.left_child.nil?
       node_temp = node.right_child
       node.right_child = nil
+      node_to_delete = node
       node = node_temp
-      return node
+      return node_to_delete
     else
       return BinarySearchTree.delete_min!(node.left_child)
+    end
+  end
+
+  def self.delete!(node, value)
+    if value == node.left_child
+      node_to_delete = node.left_child
+      if node_to_delete.left_child.nil? && node_to_delete.right_child.nil?
+        node.left_child = nil
+      elsif node_to_delete.left_child.nil? && node_to_delete.right_child
+        node.left_child = node_to_delete.right_child
+      elsif node_to_delete.right_child.nil? && node_to_delete.left_child
+        node.left_child = node_to_delete.left_child
+      elsif node_to_delete.left_child && node_to_delete.right_child
+        min = BinarySearchTree.delete_min!(node_to_delete.right_child)
+        left = node_to_delete.left_child
+        right = node_to_delete.right_child
+        node.left_child = min
+        min.left_child = left
+        min.right_child = right
+      end
+    elsif value == node.right_child
+      node_to_delete = node.right_child
+      if node_to_delete.left_child.nil? && node_to_delete.right_child.nil?
+        node.right_child = nil
+      elsif node_to_delete.left_child.nil? && node_to_delete.right_child
+        node.right_child = node_to_delete.right_child
+      elsif node_to_delete.right_child.nil? && node_to_delete.left_child
+        node.right_child = node_to_delete.left_child
+      elsif node_to_delete.left_child && node_to_delete.right_child
+        min = BinarySearchTree.delete_min!(node_to_delete.right_child)
+        left = node_to_delete.left_child
+        right = node_to_delete.right_child
+        node.right_child = min
+        min.left_child = left
+        min.right_child = right
+      end
     end
   end
 
