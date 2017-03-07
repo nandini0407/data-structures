@@ -1,9 +1,9 @@
 class BinaryTree
 
-  attr_accessor :root, :left_child, :right_child
+  attr_accessor :value, :left_child, :right_child
 
-  def initialize(root)
-    @root = root
+  def initialize(value)
+    @value = value
     @left_child = nil
     @right_child = nil
   end
@@ -33,7 +33,7 @@ class BinaryTree
   # def preorder(&prc)
   #   prc ||= Proc.new { |el| puts el }
   #
-  #   prc.call(@root)
+  #   prc.call(@value)
   #   if @left_child
   #     @left_child.preorder
   #   end
@@ -48,7 +48,7 @@ class BinaryTree
   #   if @left_child
   #     @left_child.inorder
   #   end
-  #   prc.call(@root)
+  #   prc.call(@value)
   #   if @right_child
   #     @right_child.inorder
   #   end
@@ -63,7 +63,7 @@ class BinaryTree
   #   if @right_child
   #     @right_child.postorder
   #   end
-  #   prc.call(@root)
+  #   prc.call(@value)
   # end
 
 end

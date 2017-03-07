@@ -17,8 +17,6 @@ def build_binary_tree(arr)
   bt_arr
 end
 
-# print build_binary_tree([1, 2, 3, 4, 5, 6])
-
 def build_binary_search_tree(arr)
   root = BSTNode.new(arr[0])
   tree = BinarySearchTree.new(root)
@@ -58,7 +56,12 @@ def postorder(node)
   puts node.value
 end
 
-bst = build_binary_search_tree([5, 8, 3, 2, 7, 4, 1])
-inorder(bst)
-preorder(bst)
-postorder(bst)
+bin_tree = build_binary_tree([1, 2, 3, 4, 5, 6])
+inorder(bin_tree[0])
+preorder(bin_tree[0])
+postorder(bin_tree[0])
+
+# bst = build_binary_search_tree([5, 8, 3, 2, 7, 4, 1])
+# inorder(bst)
+# preorder(bst)
+# postorder(bst)
