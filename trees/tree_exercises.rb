@@ -190,5 +190,29 @@ def get_level_of_node(node, key, level)
   end
 end
 
-puts get_node_level(bin_tree, 3)
-puts get_node_level(bst, 4)
+# puts get_node_level(bin_tree, 3)
+# puts get_node_level(bst, 4)
+
+# Problem 7 : Get nodes at distance k from root
+
+def nodes_at_k_distance(node, k)
+  h = height(node)
+  (1..h).each do |n|
+    next if (n - 1) != k
+    get_nodes_at_k_distance(node, n)
+  end
+end
+
+def get_nodes_at_k_distance(node, level)
+  if node.nil?
+    return
+  elsif level == 1
+    puts node.value
+  else
+    get_nodes_at_k_distance(node.left_child, level - 1)
+    get_nodes_at_k_distance(node.right_child, level - 1)
+  end
+end
+
+nodes_at_k_distance(bin_tree, 1)
+nodes_at_k_distance(bst, 2)
