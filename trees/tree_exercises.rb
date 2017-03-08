@@ -229,5 +229,25 @@ end
 
 # nodes_at_k_distance(bin_tree, 2)
 # nodes_at_k_distance(bst, 3)
-k_distance_nodes(bin_tree, 2)
-k_distance_nodes(bst, 3)
+# k_distance_nodes(bin_tree, 2)
+# k_distance_nodes(bst, 3)
+
+# Problem 9 : Print ancestors of a given node/key
+
+def ancestors(node, key)
+  if node.nil?
+    return false
+  elsif node.value == key
+    return true
+  end
+
+  if ancestors(node.left_child, key) || ancestors(node.right_child, key)
+    puts node.value
+    return true
+  else
+    return false
+  end
+end
+
+ancestors(bin_tree, 6)
+ancestors(bst, 4)
