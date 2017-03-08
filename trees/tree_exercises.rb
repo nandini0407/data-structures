@@ -214,5 +214,20 @@ def get_nodes_at_k_distance(node, level)
   end
 end
 
-nodes_at_k_distance(bin_tree, 1)
-nodes_at_k_distance(bst, 2)
+# alternative solution
+
+def k_distance_nodes(node, k)
+  if node.nil?
+    return
+  elsif k == 0
+    puts node.value
+  else
+    k_distance_nodes(node.left_child, k - 1)
+    k_distance_nodes(node.right_child, k - 1)
+  end
+end
+
+# nodes_at_k_distance(bin_tree, 2)
+# nodes_at_k_distance(bst, 3)
+k_distance_nodes(bin_tree, 2)
+k_distance_nodes(bst, 3)
