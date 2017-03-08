@@ -145,6 +145,8 @@ end
 # puts count_leaf_nodes(bin_tree)
 # puts count_leaf_nodes(bst)
 
+# Problem 6 : Level order traversal
+
 def level_order_traversal(node)
   h = height(node)
   (1..h).each do |n|
@@ -163,5 +165,30 @@ def print_given_level(node, level)
   end
 end
 
-level_order_traversal(bin_tree)
-level_order_traversal(bst)
+# level_order_traversal(bin_tree)
+# level_order_traversal(bst)
+
+# Problem 8 : Calculate level of a node
+
+def get_node_level(node, key)
+  get_level_of_node(node, key, 1)
+end
+
+def get_level_of_node(node, key, level)
+  if node.nil?
+    return 0
+  elsif node.value == key
+    return level
+  else
+    left_level = get_level_of_node(node.left_child, key, level + 1)
+    right_level = get_level_of_node(node.right_child, key, level + 1)
+    if left_level != 0
+      return left_level
+    else
+      return right_level
+    end
+  end
+end
+
+puts get_node_level(bin_tree, 3)
+puts get_node_level(bst, 4)
