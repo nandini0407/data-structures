@@ -103,5 +103,23 @@ def height(node)
   end
 end
 
-puts height(bin_tree)
-puts height(bst)
+# puts height(bin_tree)
+# puts height(bst)
+
+def root_to_leaf_paths(node, path)
+  if node.nil?
+    return
+  else
+    path << node.value
+  end
+
+  if node.left_child.nil? && node.right_child.nil?
+    print path
+  else
+    root_to_leaf_paths(node.left_child, path.dup)
+    root_to_leaf_paths(node.right_child, path.dup)
+  end
+end
+
+puts root_to_leaf_paths(bin_tree, [])
+puts root_to_leaf_paths(bst, [])
