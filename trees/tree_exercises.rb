@@ -142,5 +142,26 @@ def count_leaf_nodes(node)
   end
 end
 
-puts count_leaf_nodes(bin_tree)
-puts count_leaf_nodes(bst)
+# puts count_leaf_nodes(bin_tree)
+# puts count_leaf_nodes(bst)
+
+def level_order_traversal(node)
+  h = height(node)
+  (1..h).each do |n|
+    print_given_level(node, n)
+  end
+end
+
+def print_given_level(node, level)
+  if node.nil?
+    return
+  elsif level == 1
+    puts node.value
+  else
+    print_given_level(node.left_child, level - 1)
+    print_given_level(node.right_child, level - 1)
+  end
+end
+
+level_order_traversal(bin_tree)
+level_order_traversal(bst)
