@@ -87,6 +87,8 @@ end
 # puts size(bin_tree)
 # puts size(bst)
 
+# Problem 3 : Calculate height of a tree
+
 def height(node)
   if node.nil?
     return 0
@@ -106,6 +108,8 @@ end
 # puts height(bin_tree)
 # puts height(bst)
 
+# Problem 4 : Print all root-to-leaf paths in a tree
+
 def root_to_leaf_paths(node, path)
   if node.nil?
     return
@@ -121,5 +125,22 @@ def root_to_leaf_paths(node, path)
   end
 end
 
-puts root_to_leaf_paths(bin_tree, [])
-puts root_to_leaf_paths(bst, [])
+# puts root_to_leaf_paths(bin_tree, [])
+# puts root_to_leaf_paths(bst, [])
+
+# Problem 5 : Count leabf nodes
+
+def count_leaf_nodes(node)
+  if node.nil?
+    return 0
+  elsif node.left_child.nil? && node.right_child.nil?
+    return 1
+  else
+    left_leaves = count_leaf_nodes(node.left_child)
+    right_leaves = count_leaf_nodes(node.right_child)
+    return left_leaves + right_leaves
+  end
+end
+
+puts count_leaf_nodes(bin_tree)
+puts count_leaf_nodes(bst)
