@@ -30,6 +30,7 @@ end
 
 bst = build_binary_search_tree([5, 8, 3, 2, 7, 4, 1])
 
+# Easy Problems
 # Problem 1a : Inorder, preoder and postorder tree traversals
 
 def inorder(node)
@@ -249,5 +250,36 @@ def ancestors(node, key)
   end
 end
 
-ancestors(bin_tree, 6)
-ancestors(bst, 4)
+# ancestors(bin_tree, 6)
+# ancestors(bst, 4)
+
+# Medium Problems
+# Problem 1 : Maximum  width of a binary tree
+
+def tree_to_array(node)
+  h = height(node)
+  tree_arr = []
+  (1..h).each do |n|
+    tree_arr << node_at_a_level(node, n)
+  end
+  tree_arr
+end
+
+def node_at_a_level(node, level)
+  if node.nil?
+    return
+  elsif level == 1
+    return node
+  else
+    node_at_a_level(node.left_child, level - 1)
+    node_at_a_level(node.right_child, level - 1)
+  end
+end
+
+arr = tree_to_array(bin_tree)
+arr.each { |el| puts el }
+
+def maximum_width_of_tree(node)
+  level_count = Hash.new
+
+end
