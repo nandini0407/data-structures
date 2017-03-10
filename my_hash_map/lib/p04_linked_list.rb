@@ -75,8 +75,6 @@ class LinkedList
     each do |link|
       if link.key == key
         link.val = val
-      else
-        append(key, val)
       end
     end
   end
@@ -96,6 +94,7 @@ class LinkedList
       prc.call(link)
       link = link.next
     end
+    self
   end
 
   # uncomment when you have `each` working and `Enumerable` included

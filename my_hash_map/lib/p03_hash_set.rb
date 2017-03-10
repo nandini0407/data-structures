@@ -39,7 +39,7 @@ class HashSet
   end
 
   def resize!
-    new_store = @store.dup
+    new_store = @store.flatten
     @store = Array.new(num_buckets * 2) { Array.new }
     new_store.each do |el|
       @store[el.hash % num_buckets] << el
