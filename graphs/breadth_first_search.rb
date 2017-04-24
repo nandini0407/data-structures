@@ -27,4 +27,6 @@ def bfs(graph, s) # s is the source vertex from which we will traverse the entir
   p "parents", parents
 end
 
+# O(V + E), i.e, V is the set of vertices and E is the set of edges
+
 bfs({ 1 => [2, 3], 2 => [4, 5], 3 => [6, 7], 4 => [], 5 => [], 6 => [], 7 => [] }, 1)
