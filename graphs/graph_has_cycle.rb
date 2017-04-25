@@ -1,6 +1,9 @@
 # Given a directed graph, print if the graph has a cycle
 #
-# Solution : Use DFS
+# Solution : Use DFS. If the state of a vertex is "not visited", then it is the first
+# time we are encountering it. If a vertex is visited while its state is "now visiting", then
+# there is a cycle present. But if it is already been visited (i.e., its state is "done")
+# then it is not a cycle since we may be encountering through a vertex that is outside the cycle. 
 
 def has_cycle?(graph)
   visited = Hash.new

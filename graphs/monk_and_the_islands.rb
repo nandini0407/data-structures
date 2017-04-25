@@ -2,6 +2,8 @@
 # islands are connected to each other by Bidirectional bridges running over water. Monk hates to cross
 # these bridges as they require a lot of effort. He is standing at Island #1 and wants to reach the
 # Island #N. Find the minimum the number of bridges that he shall have to cross, if he takes the optimal route.
+#
+# Solution : Use BFS
 
 def monk_and_islands(islands, n) # islands is the graph that denotes bridge connections between islands
   queue = []
