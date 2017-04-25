@@ -9,6 +9,7 @@ end
 # cyclic graphs). We can view a topological sort of a graph as an ordering of its vertices along a horizontal
 # line so that all directed edges go from left to right. Topological sorting is different from the usual kind
 # of "sorting".
+# Topological sort takes O(V + E) time.
 
 def topo_sort_dfs(dag)
   sorted_vertices = []
