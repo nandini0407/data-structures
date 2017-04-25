@@ -1,3 +1,5 @@
+# Depth First Search : It is a way to explore all the vertices of a graph. It starts at a root vertex
+# and explores as far as possible along each branch before backtracking.
 
 def dfs(graph)
   visited = Hash.new
