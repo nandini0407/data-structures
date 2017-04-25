@@ -3,6 +3,13 @@ def topo_sort_no_dfs(dag)
 
 end
 
+# Topological Sorting using DFS : It is one of the applications of DFS. It is performed on a
+# directed acyclic graph (or "dag"). Topological sorting of a dag is a linear ordering of all its vertices
+# such that if the dag contains an edge (u, v) then u appears before v in the ordering (linear ordering is not possible
+# cyclic graphs). We can view a topological sort of a graph as an ordering of its vertices along a horizontal
+# line so that all directed edges go from left to right. Topological sorting is different from the usual kind
+# of "sorting".
+
 def topo_sort_dfs(dag)
   sorted_vertices = []
 
