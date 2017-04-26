@@ -1,10 +1,10 @@
-# Breadth First Search : Given a graph and a distinguished source vertex s, BFS systematically explores the
+# Breadth First Search : Given an unweighted graph and a distinguished source vertex s, BFS systematically explores the
 # edges of the graph to "discover" every vertex that is reachable from s. It also computes the distance (smallest
 # number of edges) from s to each reachable vertex. BFS is useful for calculating the shortest distance between
 # two vertices, and also the path corresponding to the shortest distance. It is useful for unweighted graphs.
 # The algorithm uses a queue to store all the unexplored neighbors of a given vertex. It shifts off the first vertex
 # of the queue in each iteration till it becomes empty.
-# Time complexity : O(V + E), i.e, V is the set of vertices and E is the set of edges
+# Time complexity : O(V + E), i.e, V is the set of vertices and E is the set of edges.
 
 require 'thread'
 
