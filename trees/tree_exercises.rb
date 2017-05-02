@@ -254,7 +254,7 @@ end
 # ancestors(bst, 4)
 
 # Medium Problems
-# Problem 1 : Maximum  width of a binary tree
+# Problem 1 : Maximum width of a binary tree
 
 def tree_to_array(node)
   h = height(node)
@@ -276,10 +276,36 @@ def node_at_a_level(node, level)
   end
 end
 
-arr = tree_to_array(bin_tree)
-arr.each { |el| puts el }
+# arr = tree_to_array(bin_tree)
+# arr.each { |el| puts el }
 
 def maximum_width_of_tree(node)
   level_count = Hash.new
 
 end
+
+# Problem 3 : Write code to determine if two binary trees are identical.
+
+def identical?(node1, node2)
+  if node1.nil? || node2.nil?
+    return false
+  elsif node1.value != node2.value
+    return false
+  elsif node1.left_child.nil? && node2.left_child.nil? && node1.right_child.nil? && node2.right_child.nil?
+    return true
+  else
+    left_identical = identical?(node1.left_child, node2.left_child)
+    right_identical = identical?(node1.right_child, node2.right_child)
+    return left_identical && right_identical
+  end
+end
+
+# tree1 = build_binary_tree([1, 2, 3])
+# tree2 = build_binary_tree([1, 3, 2])
+# tree3 = build_binary_tree([1, 3, 2])
+# tree4 = build_binary_tree([1, 3, 5, 6])
+#
+# puts identical?(tree1, tree2)
+# puts identical?(tree2, tree3)
+# puts identical?(tree2, tree4)
+# puts identical?(nil, nil)
